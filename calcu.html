@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <style>
+        #calc {
+            background-color: rgb(109, 108, 104);
+            height: 530px;
+            width: 431px;
+            padding: 5px;
+            ;
+        }
+
+        .btn {
+            height: 100px;
+            width: 100px;
+            background-color: rgb(230, 181, 230);
+            border-radius: 5px;
+            margin: 2px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        #ecranblue {
+            height: 100px;
+            width: 418px;
+            margin: 5px;
+            background-color: rgb(224, 212, 212);
+            border-radius: 5px;
+            padding: 2px;
+            font-family: RobotoMono;
+            font-size: 20px;
+        }
+
+        #upscreen {
+            margin: 5px;
+            font-size: 30px;
+            text-align: right;
+            height: 30px;
+        }
+
+        #downscreen {
+            font-size: 55px;
+            text-align: right;
+        }
+    </style>
+    <script>
+        function afficherDownscreen(valeur) {
+            document.getElementById("downscreen").innerText = valeur;
+        }
+        function afficherUpscreen(valeur) {
+            document.getElementById("upscreen").innerText = valeur;
+        }
+        var valeurup = '';
+        var valeurdown = '';
+        function traiterNombre(nombre) {
+            valeurdown = valeurdown + nombre;
+            valeurup = valeurup + nombre;
+            afficherDownscreen(valeurdown) ;
+        }
+        function traiterOperateur(operateur) {
+            var result = eval (valeurup);
+            valeurdown = '';
+            valeurup = result + operateur;
+            afficherUpscreen(valeurup) ;
+            afficherDownscreen(result) ;
+        }
+        function calculer(operateur) {
+            var result = eval (valeurup);
+            valeurup = valeurup + operateur ;
+            afficherDownscreen(result) ;
+            afficherUpscreen(valeurup);
+            valeurdown = '';
+            valeurup = result;
+        } 
+    </script>
+</head>
+
+<body>
+    <div id="calc">
+        <div id="ecranblue">
+            <div id="upscreen"></div>
+            <div id="downscreen"></div>
+        </div>
+        <div>
+            <button class="btn" onclick="traiterNombre('7')">7</button>
+            <button class="btn" onclick="traiterNombre('8')">8</button>
+            <button class="btn" onclick="traiterNombre('9')">9</button>
+            <button class="btn" onclick="traiterOperateur('*')">x</button>
+        </div>
+        <div>
+            <button class="btn" onclick="traiterNombre('4')">4</button>
+            <button class="btn" onclick="traiterNombre('5')">5</button>
+            <button class="btn" onclick="traiterNombre('6')">6</button>
+            <button class="btn" onclick="traiterOperateur('-')">-</button>
+        </div>
+        <div>
+            <button class="btn" onclick="traiterNombre('1')">1</button>
+            <button class="btn" onclick="traiterNombre('2')">2</button>
+            <button class="btn" onclick="traiterNombre('3')">3</button>
+            <button class="btn" onclick="traiterOperateur('+')">+</button>
+        </div>
+        <div>
+            <button class="btn" onclick="traiterNombre('0')">0</button>
+            <button class="btn" onclick="traiterOperateur('.')">.</button>
+            <button class="btn" onclick="traiterOperateur('/')">/</button>
+            <button class="btn" onclick="calculer('=')"> = </button>
+        </div>
+    </div>
+</body>
+
+</html>

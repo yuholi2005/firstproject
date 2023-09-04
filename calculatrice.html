@@ -1,0 +1,123 @@
+<html>
+
+<head>
+    <style>
+    #calc{
+        height: 465px;;
+        width: 357px ;
+        background-color: rgb(87, 87, 87);
+        padding: 7px;
+      }
+    .btn{
+        height: 80px;
+        width: 80px;
+        margin: 3px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 30px;
+        background-color: beige;
+    }
+    #greenscreen{
+        height: 80px ;
+        width: 347px;
+        background-color: rgb(198, 221, 164);
+        margin-bottom: 5px;
+        border-radius: 3px;
+        padding: 3px;
+        
+    }
+    #upscreen{
+        height: 30px ;
+        width: 346px;
+        font-size: 25px;
+        text-align: right ;
+        
+    }
+    #downscreen{
+        height: 50px ;
+        width: 346px;
+        font-size: 45px ;
+        text-align: right ;
+        
+    }
+    #deletebtn{
+        height: 30px;
+        width: 215px;
+        margin-left: 70px;
+        margin-bottom: 5px;
+        font-size: large;
+        background-color: beige;
+    }
+    </style>
+    <script>
+        function afficherDownscreen(valeur) {
+            document.getElementById("downscreen").innerText =valeur
+        }
+        function afficherUpscreen(valeur) {
+       document.getElementById("upscreen").innerText =valeur}
+       var upvaleur ='';
+       var downvaleur = '';
+       function traiterNombre(nombre) {
+       downvaleur = downvaleur + nombre;
+       upvaleur = upvaleur + nombre;
+       afficherDownscreen (downvaleur);
+       }
+       function traiterOperateur(operateur) {
+       var result = eval (upvaleur)
+       downvaleur = '';
+       upvaleur = result + operateur;
+       afficherUpscreen (upvaleur);
+       afficherDownscreen (result);
+       }
+       function calculer(operateur) {
+        var result = eval (upvaleur)
+       downvaleur = '';
+       afficherUpscreen (upvaleur + '=');
+       afficherDownscreen (result);
+       }
+       function supprimer() {
+       downvaleur = '';
+       upvaleur = '';
+       afficherUpscreen (upvaleur);
+       afficherDownscreen (downvaleur);
+       }
+
+    </script>
+</head>
+
+<body>
+    <div id="calc">
+        <div id="greenscreen">
+            <div id="upscreen"></div>
+            <div id="downscreen"></div>
+        </div>
+        <button id="deletebtn" onclick="supprimer('')">Clear</button>
+        <div>
+            <button class="btn" onclick="traiterNombre('7')">7</button>
+            <button class="btn" onclick="traiterNombre('8')">8</button>
+            <button class="btn" onclick="traiterNombre('9')">9</button>
+            <button class="btn" onclick="traiterOperateur('*')">x</button>
+        </div>
+        <div>
+            <button class="btn" onclick="traiterNombre('4')">4</button>
+            <button class="btn" onclick="traiterNombre('5')">5</button>
+            <button class="btn" onclick="traiterNombre('6')">6</button>
+            <button class="btn" onclick="traiterOperateur('+')">+</button>
+        </div>
+        <div>
+            <button class="btn" onclick="traiterNombre('1')">1</button>
+            <button class="btn" onclick="traiterNombre('2')">2</button>
+            <button class="btn" onclick="traiterNombre('3')">3</button>
+            <button class="btn" onclick="traiterOperateur('-')">-</button>
+        </div>
+        <div>
+            <button class="btn" onclick="traiterNombre('0')">0</button>
+            <button class="btn" onclick="traiterNombre('.')">.</button>
+            <button class="btn" onclick="traiterOperateur('/')">/</button>
+            <button class="btn" onclick="calculer('=')">=</button>
+        </div>
+
+    </div>
+</body>
+
+</html>
